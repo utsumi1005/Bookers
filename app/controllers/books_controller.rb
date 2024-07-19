@@ -9,9 +9,10 @@ class BooksController < ApplicationController
       flash[:notice] = "Book was successfully created."
       redirect_to book_path(book.id)
     else
+      flash.now[:notice] = "error prohibited this book from being saved:"
       @books=Book.all
       @book =Book.new(book_params)
-      render :index
+      render :index, status: :unprocessable_entity
     end
   end
 
@@ -34,6 +35,7 @@ class BooksController < ApplicationController
       flash[:notice] = "Book was successfully updated."
       redirect_to book_path(book.id)
     else
+      flash.now[:notice] = "error prohibited this book from being saved:"
       @books=Book.all
       @book=Book.new
       render :index

@@ -26,15 +26,18 @@
 
 <h2>Nwe Book</h2>
 
-<% if @book.errors.any? %>
-  <div id ="error-explanation">
-    <h2><%= @book.errors.count %>error prohibited this book from being saved:</h2>
-  </div>
-  <ul>
-    <% @book.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
+<%= form_with model: @book do |f| %>
+  <% if @book.errors.any? %>
+    <div id ="error-explanation">
+      <h2><%= @book.errors.count %>error prohibited this book from being saved:</h2>
+    </div>
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
 <% end %>
 
 <!-- form_with部分 -->
